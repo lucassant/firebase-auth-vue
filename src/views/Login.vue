@@ -1,28 +1,38 @@
 <template>
   <div class="login">
-    <h1>Login</h1>
-    <input type="text" placeholder="Email" v-model="email" />
-    <br /><br />
-    <input type="password" placeholder="Senha" v-model="senha" />
-    <br />
-    <br />
-    <div class="btn-login">
-      <button @click="login">Login</button>
-    </div>
+    <div class="container">
+      <h1>Login</h1>
+      <input class="input" type="text" placeholder="Email" v-model="email" />
+      <br /><br />
+      <input
+        class="input"
+        type="password"
+        placeholder="Senha"
+        v-model="senha"
+      />
+      <br />
+      <br />
 
-    <br />
-    <div class="btn-login">
-      <button @click="loginGoogle">Login pelo google</button>
+      <button class="button is-primary" @click="login">Login</button>
+      <br />
+      <br />
+
+      <button class="button is-info" @click="loginGoogle">
+        Login pelo google
+      </button>
+      <br /><br />
+      <router-link class="button is-link" to="/phone"
+        >Login pelo telefone</router-link
+      >
+      <p>
+        Não tem conta?
+        <span>
+          <router-link to="/registrar">crie uma conta</router-link>
+        </span>
+      </p>
+      <div id="recaptcha-container"></div>
+      <br />
     </div>
-    <router-link to="/phone">Login pelo telefone</router-link>
-    <p>
-      Não tem conta?
-      <span>
-        <router-link to="/registrar">crie uma conta</router-link>
-      </span>
-    </p>
-    <div id="recaptcha-container"></div>
-    <br />
   </div>
 </template>
 

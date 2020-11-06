@@ -1,20 +1,31 @@
 <template>
-  <div class="home">
-    <button @click="logout">Sair</button>
+  <div id="app">
+    <br />
+
+    <button class="button is-danger" @click="logout">Logout</button>
+    <br /><br />
     <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <hr />
+    <poke-list />
+    <add-movie />
+    <movies-list />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import MoviesList from "@/components/MoviesList";
+import AddMovie from "@/components/AddMovie";
+import PokeList from "@/components/PokeList";
 import firebase from "firebase";
 
 export default {
   name: "Home",
+
   components: {
-    HelloWorld,
+    MoviesList,
+    AddMovie,
+    PokeList,
   },
   methods: {
     logout: function () {

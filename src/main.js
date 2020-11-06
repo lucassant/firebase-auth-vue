@@ -2,8 +2,32 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import firebase from 'firebase'
+import '../node_modules/bulma/css/bulma.css'
+
+//import { createProvider } from 'vue-apollo';
+import { ApolloClient } from 'apollo-client'
+import { HttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+
+import VueApollo from 'vue-apollo'
 
 Vue.config.productionTip = false
+
+const httpLink = new HttpLink({
+  uri: 'https://vue-apollo-teste.herokuapp.com/v1/graphql'
+});
+
+const apolloClient = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+  connectToDevTools: true
+})
+
+Vue.use(VueApollo)
+
+const apolloProvider = new VueApollo({
+  defaultClient: apolloClient
+})
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
@@ -23,6 +47,7 @@ firebase.auth().onAuthStateChanged(() => {
   if (!app) {
     app = new Vue({
       router,
+      apolloProvider,
       render: h => h(App)
     }).$mount('#app')
 

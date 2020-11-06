@@ -4,6 +4,7 @@ import Home from '../views/Home'
 import Login from '../views/Login'
 import SignUp from '../views/SignUp'
 import PhoneLogin from '../views/PhoneLogin'
+import Counter from '../views/Counter'
 
 import firebase from 'firebase'
 
@@ -40,6 +41,14 @@ const routes = [
     path: '/home',
     name: 'Home',
     component: Home,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/counter',
+    name: 'Counter',
+    component: Counter,
     meta: {
       requiresAuth: true
     }
